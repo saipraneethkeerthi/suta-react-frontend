@@ -7,16 +7,29 @@ import React, { Component, useState } from "react";
  * @description Implementation of Forgot Component, If user forgot password then we redirect this page.
  */
 function Forget() {
+  const userId=window.location.pathname.split('/')[3]
   const onSubmitPassword = () => {
-    setPass(true);
-    setTimeout(()=>{
-      window.location.href = "/login"
-    },1000)
-    
-    
+    if(password && confirmPassword){
 
+    }
+  //   setPass(true);
+  //   setTimeout(()=>{
+  //     window.location.href = "/login"
+  //   },1000)
   };
-  const [pass, setPass] = useState(false);
+
+  const handle=(value)=>{
+    
+    if(password==value){
+      setConfirmPassword(value)
+      setMatch('')
+    }else{
+      setMatch("password not matched")
+    }
+  }
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [match,setMatch] = useState('');
   return (
     <>
       <div className="container d-flex flex-column align-items-center mt-3 p-5">
@@ -25,25 +38,32 @@ function Forget() {
             type="text"
             className="form-control mb-3"
             placeholder="New Password"
+            onChange={(e)=>setPassword(e.target.value)}
           />
+        
           <input
             type="text"
             className="form-control mb-3"
             placeholder="Confirm Password"
+            onChange={(e)=>handle(e.target.value)}
+
           />
+            {match?<>
+          <p style={{ fontSize: "12px", fontWeight: "bold", color: "red" }}>{match}</p>
+          </>:""}
       
           <button className="btn btn-primary" onClick={() => onSubmitPassword()}>
           
             Submit
           </button>
-          
+{/*           
           {pass ? (
             <>
               <p>password changed successfully</p>
             </>
           ) : (
             ""
-          )}
+          )} */}
         </div>
       </div>
 

@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Login from "./components/global components/login";
 import Signup from "./components/global components/signup";
-import Forget from "./components/global components/forget";
+import ForgetPasswordReset from "./components/global components/forget";
 import AllProducts from "./components/global components/allProducts";
 import About from "./components/global components/about";
 
@@ -79,8 +79,8 @@ function App() {
           <Route exact path="/" render={() => pageRender(Login, "login")} />
           <Route
             exact
-            path="/forget"
-            render={() => pageRender(Forget, "forget")}
+            path="/resetPassword/confirm/:id"
+            render={() => pageRender(ForgetPasswordReset, "forget")}
           />
           <Route
             exact
