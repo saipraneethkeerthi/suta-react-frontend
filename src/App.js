@@ -35,6 +35,7 @@ function App() {
       pageStr === "signup" ||
       pageStr === "about" ||
       pageStr === "forget" ||
+      pageStr === "email"|| 
       isLoggedIn
     ) {
       return (
@@ -117,7 +118,7 @@ function App() {
            <Route
             exact
             path="/email"
-            render={() => pageRender(ResetpasswordEmail)}
+            render={() => pageRender(ResetpasswordEmail,"email")}
           />
         </Switch>
       </Router>

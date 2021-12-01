@@ -1,6 +1,6 @@
 //Importing React Component from react library
 import React, { Component, useState } from "react";
-
+import {resetMail} from "../../store/actions"
 /**
  * @author:"Madhavi itikala and Spandana"
  * @returns {Html}
