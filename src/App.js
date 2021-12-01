@@ -21,6 +21,7 @@ import ErrorPage from "./components/global components/errorPage/errorPage";
 import AdminProducts from "./components/admin/product";
 import AdminCategory from "./components/admin/category";
 import Checkout from './components/global components/checkout/checkout';
+import Email from './components/global components/email'
 
 /**
  * @description rendering all the compomnents of the site here
@@ -112,6 +113,11 @@ function App() {
             exact
             path="/checkout"
             render={() => pageRender(Checkout)}
+          />
+           <Route
+            exact
+            path="/email"
+            render={() => pageRender(Email)}
           />
         </Switch>
       </Router>
