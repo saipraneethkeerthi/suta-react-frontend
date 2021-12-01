@@ -1,5 +1,5 @@
 import React from 'react';
-import {handleValidateEmail} from '../../global components/signup'
+import {handleValidateEmail} from './signup'
 
 const Email = () => {
     return (

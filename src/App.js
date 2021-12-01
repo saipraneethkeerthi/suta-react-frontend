@@ -3,25 +3,25 @@ import React from "react";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Login from "./components/global components/login/login";
-import Signup from "./components/global components/signup/signup";
-import Forget from "./components/global components/forget/forget";
-import AllProducts from "./components/global components/AllProducts/AllProducts";
-import About from "./components/global components/About/about";
+import Login from "./components/global components/login";
+import Signup from "./components/global components/signup";
+import Forget from "./components/global components/forget";
+import AllProducts from "./components/global components/allProducts";
+import About from "./components/global components/about";
 
 // import Navbar from "./components/global components/Navbar/Navbar";
-import Footer from "./components/global components/footer/footer";
+import Footer from "./components/global components/footer";
 
-import NavBar from "./components/global components/Navbar/Navbar";
-import SingleProduct from "./components/global components/SingleProduct/SingleProduct";
-import Trackorder from "./components/global components/order/trackorder";
-import Landing from "./components/global components/landing/landing";
-import Cart from "./components/global components/cart/cart";
+import NavBar from "./components/global components/navbar";
+import SingleProduct from "./components/global components/singleProduct";
+import Trackorder from "./components/global components/trackorder";
+import Landing from "./components/global components/landing";
+import Cart from "./components/global components/cart";
 import ErrorPage from "./components/global components/errorPage/errorPage";
 import AdminProducts from "./components/admin/product";
 import AdminCategory from "./components/admin/category";
-import Checkout from './components/global components/checkout/checkout';
-import Email from './components/global components/email'
+import Checkout from './components/global components/checkout';
+import ResetpasswordEmail from './components/global components/resetpasswordEmail'
 
 /**
  * @description rendering all the compomnents of the site here
@@ -117,7 +117,7 @@ function App() {
            <Route
             exact
             path="/email"
-            render={() => pageRender(Email)}
+            render={() => pageRender(ResetpasswordEmail)}
           />
         </Switch>
       </Router>
