@@ -78,7 +78,7 @@ function Login() {
               onKeyPress={(key) => (key === "Enter" ? onSubmit() : "")}
             />
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <Link to="/forget">
+              <Link to="/email">
                 <p>Forgot Password?</p>
               </Link>
               {/* <Link to="/signup">Create account</Link> */}

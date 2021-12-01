@@ -77,3 +77,15 @@ export const removeFromCart = (index,getData) => {
   };
 };
 
+export const resetMail=(body,getData)=>{
+
+  return(dispatch)=>{
+    axios.post(`${url}/forgot_password`,body)
+    .then((response)=>{
+      getData(response)
+    })
+
+    }
+  
+
+}

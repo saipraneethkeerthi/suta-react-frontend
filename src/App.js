@@ -21,7 +21,8 @@ import ErrorPage from "./components/global components/errorPage/errorPage";
 import AdminProducts from "./components/admin/product";
 import AdminCategory from "./components/admin/category";
 import Checkout from './components/global components/checkout';
- 
+import ResetpasswordEmail from './components/global components/resetpasswordEmail'
+
 /**
  * @description rendering all the compomnents of the site here
  * using router,switch,route. And the user can render to that particular webpage accordingly.
@@ -34,6 +35,7 @@ function App() {
       pageStr === "signup" ||
       pageStr === "about" ||
       pageStr === "forget" ||
+      pageStr === "email"|| 
       isLoggedIn
     ) {
       return (
@@ -112,6 +114,11 @@ function App() {
             exact
             path="/checkout"
             render={() => pageRender(Checkout)}
+          />
+           <Route
+            exact
+            path="/email"
+            render={() => pageRender(ResetpasswordEmail,"email")}
           />
         </Switch>
       </Router>
