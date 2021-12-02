@@ -15,8 +15,8 @@ function Forget() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [match,setMatch] = useState('');
   const [validatePassword, setValidatePassword] = useState("");
-
-
+  const[login,setLogin] = useState(false);
+  const[error,setError] = useState(false)
   const isUpper = (pswd) => {
     let format = /[A-Z]/;
     if (format.test(pswd)) {
@@ -82,8 +82,12 @@ function Forget() {
 
   const onSubmitPassword=()=>{
     let body ={id:userId,password:confirmPassword}
-    dispatch(resetPassword(body,()=>{
+    dispatch(resetPassword(body,(success)=>{
       console.log("password reset successfully")
+      setLogin(true)
+
+    },(failure)=>{
+      setError(true)
     }))
   }
   
@@ -92,14 +96,14 @@ function Forget() {
       <div className="container d-flex flex-column align-items-center mt-3 p-5">
         <div className="card w-50 d-flex flex-column align-items-center p-5">
           <input
-            type="text"
+            type="password"
             className="form-control mb-3"
             placeholder="New Password"
             onChange={(e)=>handleValidatePassword(e.target.value)}
           />
         {validatePassword}
           <input
-            type="text"
+            type="password"
             className="form-control mb-3"
             placeholder="Confirm Password"
             onChange={(e)=>handleConfirmPassword(e.target.value)}
@@ -113,6 +117,8 @@ function Forget() {
           
             Submit
           </button>
+          {login?<><p className="mt-2" style={{color:"green"}}>Your password has been changed successfully.<a href = "/">Login</a></p></>:""}
+          {error?<><p style={{color:"red"}}>Somenthing went wrong</p></>:""}
 {/*           
           {pass ? (
             <>

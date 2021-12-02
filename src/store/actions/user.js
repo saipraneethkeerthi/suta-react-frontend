@@ -85,13 +85,15 @@ export const resetMail = (body, getData) => {
   };
 };
 
-export const resetPassword = (body, getData) => {
+export const resetPassword = (body, getData,failure) => {
   return (dispatch) => {
     
     axios
       .post(`http://localhost:1109/${body.id}/reset_password`, body)
       .then((response) => {
         getData(response);
-      });
+      }).catch((error)=>{
+        failure(error)
+      })
   };
 };

@@ -26,6 +26,8 @@ const Email = () => {
       dispatch(
         resetMail(body, () => {
           console.log("confirmed Email");
+          setValidateEmail("")
+          setMsg("reset Password link is sent to your email address")
         })
       );
     }
@@ -34,7 +36,7 @@ const Email = () => {
 
   return (
     <div className="container w-50 p-5">
-      <div className="card d-flex flex-coulmn align-items-center p-3">
+      <div className="card d-flex flex-column align-items-center p-3">
         <input
           type="email"
           className="form-control mb-3"
@@ -62,7 +64,8 @@ const Email = () => {
         >
           Submit
         </button>
-        {/* <p style={{color:"green"}}>Reset Password link is sent to your email address:{email}</p>  */}
+        {msg?<><p style={{color:"green"}}>{msg}</p> </>:""}
+        
       </div>
     </div>
   );
