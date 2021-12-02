@@ -8,7 +8,7 @@ import {useDispatch} from "react-redux"
  * @description Implementation of Forgot Component, If user forgot password then we redirect this page.
  */
 function Forget() {
-  const dispatch =useDispatch()
+	const dispatch =useDispatch()
   const userId=window.location.pathname.split('/')[3]
 
   const [password, setPassword] = useState('');
@@ -127,10 +127,10 @@ function Forget() {
           ) : (
             ""
           )} */}
-        </div>
-      </div>
+				</div>
+			</div>
 
-    </>)
+		</>)
 }
 
 export default Forget;

@@ -75,13 +75,15 @@ export const removeFromCart = (index, getData) => {
   };
 };
 
-export const resetMail = (body, getData) => {
+export const resetMail = (body, getData ,fail) => {
   return (dispatch) => {
     axios
       .post(`http://localhost:1109/forgot_password`, body)
       .then((response) => {
         getData(response);
-      });
+      }).catch((error) => {
+          fail(error)
+      })
   };
 };
 
