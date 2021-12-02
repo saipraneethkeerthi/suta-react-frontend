@@ -7,8 +7,8 @@ import Input from "../reusable components/input";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import mainUrl from "../../config"
-
-
+import {checkEmail} from "../../store/actions"
+import { useSelector, useDispatch } from "react-redux";
 /**
  * @author:"Madhavi itikala and Spandana"
  * @returns {Html}
@@ -35,11 +35,13 @@ export default function Signup() {
   const [buttonClick, setButton] = useState(false);
   const [signupVisible, setSignupVisible] = useState(true);
   const [role, setRole] = useState('');
-
+  const [existMail,setExistMail] = useState('')
   const handleValidateEmail = (email) => {
     let regexEmail = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
     if (email.match(regexEmail)) {
       setValidateEmail("");
+     
+      
       return true;
     } else {
       setValidateEmail("Please enter a valid email");
@@ -79,6 +81,18 @@ export default function Signup() {
       return false;
     }
   };
+const dispatch = useDispatch()
+const handleCheckEmail = ()=>{
+  if(handleValidateEmail(email)){
+    dispatch(checkEmail({email:email},(data)=>{
+      console.log(data)
+    setExistMail(data)
+    },()=>{
+     setExistMail("")
+    }))
+  }
+ 
+}
 
   const handleValidatePassword = (password) => {
     let length = password.length;
@@ -166,18 +180,21 @@ export default function Signup() {
             value={userName}
             handleChange={(child) => setuserName(child)}
             onKeyPress={(key)=>console.log()}
+            
           />
-          <Input
+          <input
             type="email"
             placeholder="Enter Email"
             value={email}
-            handleChange={(child) => {
-              setEmail(child);
-              handleValidateEmail(child);
+            onChange={(event) => {
+              setEmail(event.target.value);
+              handleValidateEmail(event.target.value);
+             
             }}
-            onKeyPress={(key)=>console.log()}
-
-          />
+            className="form-control"
+            onBlur = {()=>handleCheckEmail()}
+/>
+          <p style={{color:"red",fontSize: "12px", fontWeight: "bold"}}>{existMail}</p>
           {validateEmail ? (
             <p style={{ fontSize: "12px", fontWeight: "bold", color: "red" }}>
               {validateEmail}

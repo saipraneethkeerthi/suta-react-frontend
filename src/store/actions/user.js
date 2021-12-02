@@ -78,7 +78,7 @@ export const removeFromCart = (index, getData) => {
 export const resetMail = (body, getData ,fail) => {
   return (dispatch) => {
     axios
-      .post(`http://localhost:1109/forgot_password`, body)
+      .post(`${url}/forgot_password`, body)
       .then((response) => {
         getData(response);
       }).catch((error) => {
@@ -91,7 +91,7 @@ export const resetPassword = (body, getData,failure) => {
   return (dispatch) => {
     
     axios
-      .post(`http://localhost:1109/${body.id}/reset_password`, body)
+      .post(`${url}/${body.id}/reset_password`, body)
       .then((response) => {
         getData(response);
       }).catch((error)=>{
@@ -99,3 +99,19 @@ export const resetPassword = (body, getData,failure) => {
       })
   };
 };
+
+export const checkEmail = (body,res,err)=>{
+  return (dispatch)=>{
+  axios.post(`${url}/check_email`,body) 
+  .then((response)=>{
+    if(response.data.length){
+      res(response.data)
+   }
+   else{
+    
+     err()
+   }
+  }).catch((err)=>{
+    console.log("failure",err)
+  })
+}}

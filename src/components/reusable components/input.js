@@ -10,6 +10,7 @@ const Input = (props) => {
         onChange={(event) => props.handleChange(event.target.value)}
         value={props.value}
         onKeyPress={(e) => props.onKeyPress(e.key)}
+        
       />
     </>
   );
