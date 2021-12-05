@@ -126,7 +126,7 @@ const NavBar = () => {
            <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5dIdyyUTo69D6o_niUIZNG_IZ1GoCgsExybjLwrb7WqduxwgV5p7_PCnVZk2L-P8v-KE&usqp=CAU"
             style={{ height: "30px", width: "30px" }}
-          />
+          />{userData?.userData?.cartItems?.length?(<span class="badge badge-primary">{userData?.userData?.cartItems?.length}</span>):""}
           </button>
 
           <Link to="/trackorder">
