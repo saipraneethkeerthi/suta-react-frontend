@@ -10,6 +10,11 @@ import Button from "../reusable components/button";
 import axios from "axios";
 import { loginUserAuth } from "../../store/actions";
 import { useDispatch } from "react-redux"; 
+import Cookies from "universal-cookie";
+
+
+const cookies = new Cookies();
+
 
 /**
  * @authors:"madhavi itikala and Spandana"
@@ -30,7 +35,14 @@ function Login() {
     if (userName && password) {
       const body = { userName, password };
       dispatch(
-        loginUserAuth(body, () => {
+        loginUserAuth(body, (data) => {
+          var date = new Date();
+        date.setDate(date.getDate() + 14);
+        cookies.set('suta',data, {
+          expires: date,
+          path: "/",
+          domain: ""
+        });
           // alert("logged in successfully")
           history.push("/dashboard");
         },()=>{

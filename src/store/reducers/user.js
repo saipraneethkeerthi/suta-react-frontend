@@ -24,6 +24,11 @@ export default function reducer(state = initialState, action) {
         ...state,
         userData: action.payload,
       };
+      case type.RELOAD_LOGIN:
+      return {
+        ...state,
+        isLoggedIn: true,
+      };
 
     default:
       return state;

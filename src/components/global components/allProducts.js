@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
  * And mapping the data with the help of IDs then displaying data with 
  * respectively on the dashboard for the particular category.
  */
-function AllProducts() {
+function AllProducts() { 
 	// let url = "619dd0abc0447210a8aa9f62"
 	const categoryId = window.location.pathname.split('/')[2]
 	const productList = useSelector((state) => state?.product?.product)

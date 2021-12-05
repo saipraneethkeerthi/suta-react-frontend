@@ -26,6 +26,9 @@ export const handleRemoveFromCart = (data) => ({
   payload: data,
 });
 
+export const handleReloadLogin = () => ({
+  type: types.RELOAD_LOGIN
+});
 export const loginUserAuth = (body, getData, failure) => {
   return (dispatch, getState) => {
     axios

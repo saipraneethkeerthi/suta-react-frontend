@@ -4,10 +4,17 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAllCategoryList,
-  handleAdminDataVisible,
+  handleAdminDataVisible,userLoginData
 } from "../../store/actions";
 import Cart from "./cart";
 import Checkout from "./checkout";
+
+import Cookies from "universal-cookie";
+
+
+const cookies = new Cookies();
+
+
 /**
  * @description It displays the navbar with all kinds of categories which are present in site.
  * @returns Navbar
@@ -21,9 +28,21 @@ const NavBar = () => {
 
   useEffect(() => {
     if (userData.isLoggedIn) dispatch(getAllCategoryList());
+    var suta_data = cookies.get('suta');
+    if(suta_data) dispatch(userLoginData(suta_data));
   }, []);
 
-  console.log("userRole----userRole", userRole);
+  const handleLogout=()=>{
+    cookies.remove('suta', {
+      path: "/",
+      domain: ""
+    });
+    window.location.reload();
+  }
+
+
+  
+  // console.log("userRole----userRole", access_token);
 
   const [cartvisible, setCartVisible] = useState(false);
   const[logout,setLogout] = useState(false);
@@ -97,7 +116,7 @@ const NavBar = () => {
           </form>
           {userData.isLoggedIn?(<>
          
-            <img src="https://cdn.icon-icons.com/icons2/2518/PNG/512/logout_icon_151219.png" onClick = {()=>window.location.href='/'} style={{width:"40px",height:"40px"}}/>
+            <img src="https://cdn.icon-icons.com/icons2/2518/PNG/512/logout_icon_151219.png" onClick = {()=>handleLogout()} style={{width:"40px",height:"40px"}}/>
             
          
           </>):
